@@ -16,7 +16,6 @@ def global_context():
         "nav": nav
     }
 
-# Define a route inside the blueprint
 @main.route('/')
 async def home():
     return render_template('index.html', name="Главная")
