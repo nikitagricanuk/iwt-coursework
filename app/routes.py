@@ -6,14 +6,18 @@ main = Blueprint('main', __name__)
 
 # Define a route inside the blueprint
 @main.route('/')
-def home():
-    return render_template('index.html')
+async def home():
+    return render_template('index.html', name="Главная")
+
+@main.route('/secrets')
+async def secrets():
+    return render_template('secrets.html', name="Секреты")
+
+@main.route('/users')
+async def users():
+    return render_template('users.html', name="Пользователи")
 
 @main.route('/favicon.ico')
-def favicon():
+async def favicon():
     return send_from_directory(os.path.join(main.root_path, 'static/images'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
-
-@main.route('/about')
-def about():
-    return render_template('about.html')
