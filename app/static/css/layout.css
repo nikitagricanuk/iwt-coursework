@@ -1,3 +1,85 @@
 .path-container {
-    display: inline;
+    display: flex;
+    color: #F9F7F7;
+    align-items: center;
+    background: #1a4678;
+    padding-left: 1em;
+    height: 2em;
+    z-index: 10;
+}
+
+.path-container img {
+    margin-right: 1em;
+    height: 20px;
+    width: 20px;
+    filter: invert(99%) sepia(10%) saturate(91%) hue-rotate(169deg) brightness(113%) contrast(94%);
+}
+
+.active-link {
+    position: relative;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.active-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px; /* Adjusts vertical positioning */
+    width: calc(100% + 0.4em);
+    height: 5px; /* Decrease height to fit the smaller font */
+    background-image: url('../images/brushstroke.svg'); /* Path to your SVG file */
+    background-repeat: no-repeat;
+    background-size: contain; /* Keeps the aspect ratio of the brush stroke */
+}
+
+.not-active-link {
+    text-decoration: none;
+}
+
+.header {
+    background-color: #F9F7F7;
+    border-bottom: 1px solid #DBE2EF;
+    padding: 15px 20px;
+}
+
+.header a {
+    color: #3F72AF;
+    margin-right: 15px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.main-footer {
+    background-color: #112D4E;
+    color: #F9F7F7;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.footer-social-media-links a {
+    margin: 0 5px;
+    text-decoration: none;
+}
+
+.footer-nav {
+    margin-bottom: 1em;
+}
+
+.footer-nav a {
+    color: #F9F7F7;
+    margin-right: 15px;
+}
+
+.footer-info {
+    margin-top: 10px;
+}
+
+.footer-info p {
+    margin: 5px 0;
 }
