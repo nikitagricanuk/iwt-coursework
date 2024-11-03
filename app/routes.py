@@ -4,6 +4,18 @@ import os.path
 # Create a blueprint
 main = Blueprint('main', __name__)
 
+@main.context_processor
+def global_context():
+    nav = [
+        { "title": "Главная", "url": "/" },
+        { "title": "Архитектура", "url": "/arch" },
+        { "title": "Секреты", "url": "/secrets" },
+        { "title": "Пользователи", "url": "/users" },
+    ]
+    return {
+        "nav": nav
+    }
+
 # Define a route inside the blueprint
 @main.route('/')
 async def home():
