@@ -1,6 +1,3 @@
-<nav>
-    <a href="/">Главная</a>
-    <a href="/secrets">Секреты</a>
-    <a href="/users">Юзвери</a>
-    <a href="/smt">Vault</a>
-</nav>
+{% for item in nav %}
+    <a href="{{item.url}}" {% if item.title == name %} class="active-link" {% else %} class="not-active-link" {% endif %}>{{item.title}}</a>
+{% endfor %}
