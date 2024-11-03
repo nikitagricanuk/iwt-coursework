@@ -38,14 +38,34 @@
 }
 
 .header {
+    display: flex;
+    align-items: center;
     background-color: #F9F7F7;
     border-bottom: 1px solid #DBE2EF;
     padding: 15px 20px;
+    height: 2.5em;
 }
 
 .header a {
     color: #3F72AF;
     margin-right: 15px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container img {
+    height: 32px;
+    width: 32px;
+    margin-right: 10px;
+}
+
+.logo-container p {
+    margin-right: 25px;
+    font-weight: bold;
+    font-size: 1.8em;
 }
 
 .footer {
