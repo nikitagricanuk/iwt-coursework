@@ -34,5 +34,5 @@ async def about():
 
 @main.route('/favicon.ico')
 async def favicon():
-    return send_from_directory(os.path.join(main.root_path, 'static/images'),
+    return send_from_directory(os.path.join(main.root_path, 'static/icons'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')

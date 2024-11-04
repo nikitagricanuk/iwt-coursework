@@ -28,7 +28,7 @@
     bottom: -3px; /* Adjusts vertical positioning */
     width: calc(100% + 0.4em);
     height: 5px; /* Decrease height to fit the smaller font */
-    background-image: url('/static/images/brushstroke.svg'); /* Path to your SVG file */
+    background-image: url('/static/icons/brushstroke.svg'); /* Path to your SVG file */
     background-repeat: no-repeat;
     background-size: contain; /* Keeps the aspect ratio of the brush stroke */
 }
@@ -69,8 +69,6 @@
 }
 
 .footer {
-    position: absolute;
-    bottom: 0;
     width: 100%;
 }
 
