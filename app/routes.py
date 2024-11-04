@@ -32,7 +32,11 @@ async def users():
 async def about():
     return render_template('about.html', name="Об авторе")
 
+@main.route('/login')
+async def login():
+    return render_template('login.html', name="Вход")
+
 @main.route('/favicon.ico')
 async def favicon():
     return send_from_directory(os.path.join(main.root_path, 'static/icons'),
-                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
+                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
