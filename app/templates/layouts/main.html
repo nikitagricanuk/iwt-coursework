@@ -10,6 +10,13 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
     </head>
     <body>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} mt-3">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
         <header class="header">
             <div class="logo-container">
                 <img src="{{ url_for('static', filename='icons/logo.png') }}" alt="logo" />
