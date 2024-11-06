@@ -1,5 +1,7 @@
-from flask import Blueprint, render_template, send_from_directory
+from flask import Blueprint, render_template, send_from_directory, request, flash, redirect, url_for
 import os.path
+from app.api.requests import login as backend_login
+from app.api.requests import register as backend_register
 
 # Create a blueprint
 main = Blueprint('main', __name__)
@@ -32,9 +34,37 @@ async def users():
 async def about():
     return render_template('about.html', name="Об авторе")
 
-@main.route('/login')
+@main.route('/login', methods=['GET', 'POST'])
 async def login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        # Here, you would add logic to validate the user’s credentials
+        token = await backend_login(username, password)
+        if token is not None:
+            print(token)
+            flash('Login successful!', 'success')
+            return redirect(url_for('main.home'))
+        else:
+            flash('Invalid credentials', 'danger')
     return render_template('login.html', name="Вход")
+
+
+@main.route('/register', methods=['GET', 'POST'])
+async def register():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        email = request.form.get('email')
+        password = request.form.get('password')
+        # Here, you would add logic to validate the user’s credentials
+        response =  await backend_register(username, email, password)
+        if response is not None:
+            flash('Registration successful!', 'success')
+            return redirect(url_for('main.home'))
+        else:
+            flash('Something went wrong', 'danger')
+    return render_template('register.html', name="Регистрация")
+
 
 @main.route('/favicon.ico')
 async def favicon():
