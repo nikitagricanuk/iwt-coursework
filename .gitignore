@@ -163,6 +163,3 @@ cython_debug/
 
 # VSC
 .vscode
-
-# Node.js
-node_modules/
