@@ -9,10 +9,10 @@ main = Blueprint('main', __name__)
 @main.context_processor
 def global_context():
     nav = [
-        { "title": "Главная", "url": "/" },
-        { "title": "Пользователи", "url": "/users" },
-        { "title": "Секреты (ПССС!!)", "url": "/secrets" },
-        { "title": "Об авторе", "url": "/about" },
+        { "title": "Home", "url": "/" },
+        { "title": "Users", "url": "/users" },
+        { "title": "Secrets (Shhh!!)", "url": "/secrets" },
+        { "title": "About", "url": "/about" },
     ]
     return {
         "nav": nav
@@ -20,19 +20,19 @@ def global_context():
 
 @main.route('/')
 async def home():
-    return render_template('index.html', name="Главная")
+    return render_template('index.html', name="Home")
 
 @main.route('/secrets')
 async def secrets():
-    return render_template('secrets.html', name="Секреты (ПССС!!)")
+    return render_template('secrets.html', name="Secrets (Shhh!!)")
 
 @main.route('/users')
 async def users():
-    return render_template('users.html', name="Пользователи")
+    return render_template('users.html', name="Users")
 
 @main.route('/about')
 async def about():
-    return render_template('about.html', name="Об авторе")
+    return render_template('about.html', name="About")
 
 @main.route('/login', methods=['GET', 'POST'])
 async def login():
@@ -47,7 +47,7 @@ async def login():
             return redirect(url_for('main.home'))
         else:
             flash('Invalid credentials', 'danger')
-    return render_template('login.html', name="Вход")
+    return render_template('login.html', name="Login")
 
 
 @main.route('/register', methods=['GET', 'POST'])
@@ -63,7 +63,7 @@ async def register():
             return redirect(url_for('main.home'))
         else:
             flash('Something went wrong', 'danger')
-    return render_template('register.html', name="Регистрация")
+    return render_template('register.html', name="Signup")
 
 
 @main.route('/favicon.ico')
