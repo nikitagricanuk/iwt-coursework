@@ -12,37 +12,7 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     </head>
     <body>
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <p>Try scrolling the rest of the page to see this option in action.</p>
-            </div>
-        </div>
-        <nav class="navbar navbar-expand-md bs-body border-bottom">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/">
-                    <img src="{{ url_for('static', filename='icons/logo.png') }}" alt="logo" width="32" height="32">
-                    Vault
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#offcanvasWithBothOptions" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>              
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left-aligned navigation links -->
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        {% include "components/_navigation.html" %}
-                    </ul>
-
-                    <!-- Right-aligned login content -->
-                    <ul class="navbar-nav ms-auto">
-                        {% include "components/_login_nav.html" %}
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        {% include "components/_header.html" %}
         {% block content %}{% endblock %}
 
         <div class="container-fluid bg-primary-subtle d-inline-flex align-items-center">
@@ -54,44 +24,7 @@
             </nav>
         </div>
 
-        <footer class="pt-4 pt-md-5 pb-2">
-            <div class="container">
-                <div class="row mb-3">
-                    <div class="col-lg-3">
-                        <div class="d-inline-flex mb-2 align-items-center text-body-emphasis" href="/">
-                            <img class="me-2" src="{{ url_for('static', filename='icons/logo.png') }}" alt="logo" width="32" height="32">
-                            <span class="fs-5 text-white">Vault</span>
-                        </div>
-                        <ul class="list-unstyled small">
-                            <li class="mb-2">
-                                Designed and build with all love in the world by Nikita and team during MORE.Tech hackathon by VTB.
-                            </li>
-                            <li class="mb-2">
-                                Source code is available <a href="https://github.com/nikitagricanuk/dev-secrets-vault">here</a> and licensed under <a href="https://github.com/nikitagricanuk/dev-secrets-vault/blob/main/LICENSE">Apache License 2.0</a>.
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col list-unstyled">
-                        <h5 class="align-items-center">Navigation</h5>
-                        {% include "components/_navigation.html" %}
-                    </div>
-                </div>
-                <div class="row justify-content-between">
-                    <div class="col-sm">
-                        <p>© 2024. All rights reserved. Made with 🧡 by @nikitagricanuk ^^</p>
-                    </div>
-                    <div class="col-sm-2 justify-content-center">
-                        <a href="https://vk.com/nikitagricanuk" target="_blank" class="social-icon">
-                            <img src="{{ url_for("static", filename="icons/vk.png") }}" alt="vk icon" />
-                        </a>
-                        <a href="https://t.me/nikitagricanuk" target="_blank" class="social-icon">
-                            <img src="{{ url_for("static", filename="icons/telegram.png") }}" alt="telegram icon" />
-                        </a>
-                    </div>
-                </div>
-                
-            </div>
-        </footer>
+        {% include "components/footer.html" %}
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>    

@@ -1,0 +1,38 @@
+<footer class="pt-4 pt-md-5 pb-2">
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col-lg-3">
+                <div class="d-inline-flex mb-2 align-items-center text-body-emphasis" href="/">
+                    <img class="me-2" src="{{ url_for('static', filename='icons/logo.png') }}" alt="logo" width="32" height="32">
+                    <span class="fs-5 text-white">Vault</span>
+                </div>
+                <ul class="list-unstyled small">
+                    <li class="mb-2">
+                        Designed and build with all love in the world by Nikita and team during MORE.Tech hackathon by VTB.
+                    </li>
+                    <li class="mb-2">
+                        Source code is available <a href="https://github.com/nikitagricanuk/dev-secrets-vault">here</a> and licensed under <a href="https://github.com/nikitagricanuk/dev-secrets-vault/blob/main/LICENSE">Apache License 2.0</a>.
+                    </li>
+                </ul>
+            </div>
+            <div class="col list-unstyled">
+                <h5 class="align-items-center">Navigation</h5>
+                {% include "components/_navigation.html" %}
+            </div>
+        </div>
+        <div class="row justify-content-between">
+            <div class="col-sm">
+                <p>© 2024. All rights reserved. Made with 🧡 by @nikitagricanuk ^^</p>
+            </div>
+            <div class="col-sm-2 justify-content-center">
+                <a href="https://vk.com/nikitagricanuk" target="_blank" class="social-icon">
+                    <img src="{{ url_for("static", filename="icons/vk.png") }}" alt="vk icon" />
+                </a>
+                <a href="https://t.me/nikitagricanuk" target="_blank" class="social-icon">
+                    <img src="{{ url_for("static", filename="icons/telegram.png") }}" alt="telegram icon" />
+                </a>
+            </div>
+        </div>
+        
+    </div>
+</footer>
