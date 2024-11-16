@@ -13,3 +13,17 @@
     background-repeat: no-repeat;
     background-size: contain; /* Keeps the aspect ratio of the brush stroke */
 }
+
+.profile-circle {
+    width: 32px;
+    height: 32px;
+    background-color: #3F72AF; 
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 50%; /* Make it a circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}

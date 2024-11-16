@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, send_from_directory, request, flash, redirect, url_for, make_response
+from flask import Blueprint, render_template, send_from_directory, request, flash, redirect, url_for, make_response, session
 import os.path
 from app.api.requests import login as backend_login
 from app.api.requests import register as backend_register
@@ -16,6 +16,14 @@ def global_context():
     ]
     return {
         "nav": nav
+    }
+    
+@main.context_processor
+def session_context():
+    return {
+        'logged_in': session.get('token') is not None,
+        'username': session.get('username'),
+        'token': session.get('token')
     }
 
 @main.route('/')
@@ -36,16 +44,15 @@ async def about():
 
 @main.route('/login', methods=['GET', 'POST'])
 async def login():
-    if request.method == 'POST':
+    if request.method == 'POST': # then we're receiving data from the form
         username = request.form.get('username')
         password = request.form.get('password')
         token = await backend_login(username, password)
         
-        if token is not None:  # Then everything is okay, proceed to set cookies and redirect user to the home page
-            response = make_response(redirect(url_for('main.home')))
-            response.set_cookie('username', username)
-            response.set_cookie('token', token)
-            return response
+        if token is not None:  # Then everything is okay, proceed to set session data and redirect user to the home page
+            session['username'] = username
+            session['token'] = token
+            return redirect(url_for('main.home'))
         else:
             flash('Invalid credentials', 'danger')
     
@@ -60,16 +67,19 @@ async def register():
         password = request.form.get('password')
         token =  await backend_register(username, email, password)
         
-        if token is not None: # Then everything is okay, proceed to set cookies and redirect user to the home page
-            response = make_response(redirect(url_for('main.home')))
-            response.set_cookie('username', username)
-            response.set_cookie('token', token)
+        if token is not None:
+            session['username'] = username
+            session['token'] = token
             return redirect(url_for('main.home'))
         else:
             flash('Something went wrong', 'danger')
     
     return render_template('register.html', name="Sign Up")
 
+@main.route('/logout')
+def logout():
+    session.clear()  # Clear all session data
+    return redirect(url_for('main.home'))
 
 @main.route('/favicon.ico')
 async def favicon():

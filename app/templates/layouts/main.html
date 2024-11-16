@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,11 +31,14 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>              
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left-aligned navigation links -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         {% include "components/_navigation.html" %}
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/login">Login</a>
-                        </li>
+                    </ul>
+
+                    <!-- Right-aligned login content -->
+                    <ul class="navbar-nav ms-auto">
+                        {% include "components/_login_nav.html" %}
                     </ul>
                 </div>
             </div>
@@ -51,15 +54,15 @@
             </nav>
         </div>
 
-        <footer class="pt-4 pt-md-5 pb-2 bg-primary ">
+        <footer class="pt-4 pt-md-5 pb-2">
             <div class="container">
                 <div class="row mb-3">
                     <div class="col-lg-3">
                         <div class="d-inline-flex mb-2 align-items-center text-body-emphasis" href="/">
                             <img class="me-2" src="{{ url_for('static', filename='icons/logo.png') }}" alt="logo" width="32" height="32">
-                            <span class="fs-5">Vault</span>
+                            <span class="fs-5 text-white">Vault</span>
                         </div>
-                        <ul class="list-unstyled">
+                        <ul class="list-unstyled small">
                             <li class="mb-2">
                                 Designed and build with all love in the world by Nikita and team during MORE.Tech hackathon by VTB.
                             </li>

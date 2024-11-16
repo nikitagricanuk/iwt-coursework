@@ -1,0 +1,23 @@
+{% if logged_in %}
+    <li class="nav-item">
+        <div class="row align-items-center">
+            <div class="col-auto pe-1">
+                <a class="nav-link d-flex align-items-center">
+                    <div class="profile-circle">
+                        {{ username[0] | upper }}
+                    </div>
+                </a>
+            </div>
+            <div class="col-auto ps-0">
+                <ul class="list-unstyled small">
+                    <li>Hello, {{ username }}</li>
+                    <li><a href="/dashboard">Go to the dashboard</a></li>
+                </ul>
+            </div>
+        </div>
+    </li>
+{% else %}
+    <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+    </li>
+{% endif %}
