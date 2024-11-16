@@ -57,7 +57,6 @@ async def register():
         # Here, you would add logic to validate the user’s credentials
         response =  await backend_register(username, email, password)
         if response is not None:
-            flash('Registration successful!', 'success')
             return redirect(url_for('main.home'))
         else:
             flash('Something went wrong', 'danger')
