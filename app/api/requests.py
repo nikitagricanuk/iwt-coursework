@@ -3,7 +3,8 @@ from config import BACKEND_URL, BACKEND_USERNAME, BACKEND_PASSWORD
 
 async def login(username: str, password: str):
     payload = f"username={username}&password={password}"
-    response = await send_post_request("v1/auth/token/create", payload, "x-www-form-urlencoded")
+    
+    response = await send_post_request("v1/auth/token/create", payload, False, "x-www-form-urlencoded")
     if response is not None:
         return response["session_id"] # return token
 
@@ -18,9 +19,9 @@ async def register(username: str, email: str, password: str):
         "roles": ["user"], 
         "password": password
     }
-    response = await send_post_request("v1/auth/users/create", payload, "json", token)
+    return await send_post_request("v1/auth/users/create", payload, True, "json", token)
 
-async def send_post_request(endpoint: str, payload, content_type: str, token: str = None):
+async def send_post_request(endpoint: str, payload, json: bool, content_type: str, token: str = None):
     url = f"{BACKEND_URL}/{endpoint}"
     headers = {
         "Content-Type": f"application/{content_type}",
@@ -28,7 +29,9 @@ async def send_post_request(endpoint: str, payload, content_type: str, token: st
     }
     
     try:
-        response = requests.post(url, json=payload, headers=headers)
+        if json:
+            response = requests.post(url, json=payload, headers=headers)
+        response = requests.post(url, data=payload, headers=headers)
         response.raise_for_status()
         return response.json()
     except requests.exceptions.RequestException as e:
