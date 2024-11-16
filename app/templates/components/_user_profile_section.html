@@ -2,11 +2,7 @@
     <li class="nav-item">
         <div class="row align-items-center">
             <div class="col-auto pe-1">
-                <a class="nav-link d-flex align-items-center">
-                    <div class="profile-circle">
-                        {{ username[0] | upper }}
-                    </div>
-                </a>
+                {% include "components/_user_profile_picture.html" %}
             </div>
             <div class="col-auto ps-0">
                 <ul class="list-unstyled small">
