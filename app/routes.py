@@ -77,9 +77,13 @@ async def register():
     return render_template('register.html', name="Sign Up")
 
 @main.route('/logout')
-def logout():
+async def logout():
     session.clear()  # Clear all session data
     return redirect(url_for('main.home'))
+
+@main.route('/dashboard')
+async def dashboard():
+    return render_template('dashboard/home.html', name="Dashboard")
 
 @main.route('/favicon.ico')
 async def favicon():
