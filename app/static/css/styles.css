@@ -27,3 +27,17 @@
     justify-content: center;
     text-transform: uppercase;
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.content {
+    flex: 1;
+}
+
+body, html {
+    height: 100%;
+}
