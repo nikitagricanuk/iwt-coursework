@@ -1,20 +1,24 @@
 {% extends 'layouts/login.html' %}
 {% block content %}
-    <h1>Регистрация</h1>
-    <div class="form-group">
-        <label for="username">Имя пользователя</label>
-        <input type="username" class="form-control" id="username" name="username" required>
+<h2 class="card-title">Register</h2>
+<form>
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="username" class="form-control" id="username" required>
     </div>
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" name="email" required>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" required>
     </div>
-    <div class="form-group">
-        <label for="password">Пароль</label>
-        <input type="password" class="form-control" id="password" name="password" required>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" required>
     </div>
-    <a href="/login">Уже есть аккаунт? Войти</a>
-    <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
+    <div class="mb-3">
+        Already have an account? <a href="/login">Login</a>
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>   
+</form>
 {% endblock %}
 
 
