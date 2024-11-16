@@ -42,8 +42,6 @@ async def login():
         # Here, you would add logic to validate the user’s credentials
         token = await backend_login(username, password)
         if token is not None:
-            print(token)
-            flash('Login successful!', 'success')
             return redirect(url_for('main.home'))
         else:
             flash('Invalid credentials', 'danger')
