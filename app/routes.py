@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, send_from_directory, request, flash, redirect, url_for
+from flask import Blueprint, render_template, send_from_directory, request, flash, redirect, url_for, make_response
 import os.path
 from app.api.requests import login as backend_login
 from app.api.requests import register as backend_register
@@ -39,12 +39,16 @@ async def login():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-        # Here, you would add logic to validate the user’s credentials
         token = await backend_login(username, password)
-        if token is not None:
-            return redirect(url_for('main.home'))
+        
+        if token is not None:  # Then everything is okay, proceed to set cookies and redirect user to the home page
+            response = make_response(redirect(url_for('main.home')))
+            response.set_cookie('username', username)
+            response.set_cookie('token', token)
+            return response
         else:
             flash('Invalid credentials', 'danger')
+    
     return render_template('login.html', name="Login")
 
 
@@ -54,13 +58,17 @@ async def register():
         username = request.form.get('username')
         email = request.form.get('email')
         password = request.form.get('password')
-        # Here, you would add logic to validate the user’s credentials
-        response =  await backend_register(username, email, password)
-        if response is not None:
+        token =  await backend_register(username, email, password)
+        
+        if token is not None: # Then everything is okay, proceed to set cookies and redirect user to the home page
+            response = make_response(redirect(url_for('main.home')))
+            response.set_cookie('username', username)
+            response.set_cookie('token', token)
             return redirect(url_for('main.home'))
         else:
             flash('Something went wrong', 'danger')
-    return render_template('register.html', name="Signup")
+    
+    return render_template('register.html', name="Sign Up")
 
 
 @main.route('/favicon.ico')
