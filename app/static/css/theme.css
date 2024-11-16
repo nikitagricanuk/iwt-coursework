@@ -1,30 +1,96 @@
+/* Define CSS variables for the light theme */
 :root {
-    /* Background colors */
-    --bs-body-bg: #F9F7F7;
-    --bs-light: #F9F7F7; /* To match the overall background */
+    --background-color: #F9F7F7;
+    --border-color: #DBE2EF;
+    --primary-color: #3F72AF;
+    --footer-background-color: #112D4E;
+    --text-color: #112D4E;
+    --link-color: #3F72AF;
+    --link-hover-color: #112D4E;
+}
 
-    /* Primary colors */
-    --bs-primary: #3F72AF;
-    --bs-primary-bg-subtle: #DBE2EF; /* Lighter background for subtle uses of primary color */
+/* Apply background color to the body */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
 
-    /* Secondary colors */
-    --bs-secondary: #DBE2EF;
-    --bs-secondary-bg-subtle: #F9F7F7; /* Subtle background for secondary color */
+/* Customize Bootstrap components */
+.navbar {
+    background-color: var(--background-color);
+    border-bottom: 1px solid var(--border-color);
+}
 
-    /* Text colors */
-    --bs-body-color: #112D4E; /* Main text color */
-    --bs-dark: #112D4E; /* Alternative dark color */
-    
-    /* Borders and accents */
-    --bs-border-color: #DBE2EF; /* Soft border color */
-    
-    /* Button colors */
-    --bs-btn-primary-bg: #3F72AF;
-    --bs-btn-primary-border-color: #3F72AF;
-    --bs-btn-primary-hover-bg: #112D4E; /* Darker shade on hover */
-    --bs-btn-primary-hover-border-color: #112D4E;
-    
-    /* Link colors */
-    --bs-link-color: #3F72AF;
-    --bs-link-hover-color: #112D4E;
+.navbar-brand, .navbar-nav .nav-link {
+    color: var(--text-color) !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--link-hover-color) !important;
+}
+
+.navbar-toggler-icon {
+    background-color: var(--border-color);
+}
+
+/* Borders and elements that should slightly stand out */
+.card, .btn, .form-control, .dropdown-menu {
+    border-color: var(--border-color);
+    background-color: var(--background-color);
+}
+
+/* Primary buttons and accents */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--link-hover-color);
+    border-color: var(--link-hover-color);
+}
+
+/* Footer styles */
+footer {
+    background-color: var(--footer-background-color);
+    color: var(--background-color);
+}
+
+footer a {
+    color: var(--background-color);
+}
+
+footer a:hover {
+    color: var(--primary-color);
+}
+
+footer h5 {
+    color: var(--background-color);
+}
+
+/* Breadcrumb styles */
+.breadcrumb {
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+}
+
+.breadcrumb-item.active {
+    color: var(--primary-color);
+}
+
+/* Highlight primary elements */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-color);
+}
+
+a {
+    color: var(--link-color);
+}
+
+a:hover {
+    color: var(--link-hover-color);
+}
+
+.text-white {
+    color: var(--background-color);
 }
