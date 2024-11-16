@@ -1,11 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
-html, body {
-    background: #F9F7F7;
-    margin: 0;
-    padding: 0;
+.brushstroke {
+    position: relative;
 }
-p, a {
-    font-family: "Roboto", serif;
-    font-weight: 400;
-    font-style: normal;
+
+.brushstroke::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px; /* Adjusts vertical positioning */
+    width: calc(100% + 0.4em);
+    height: 5px; /* Decrease height to fit the smaller font */
+    background-image: url('/static/icons/brushstroke.svg'); /* Path to your SVG file */
+    background-repeat: no-repeat;
+    background-size: contain; /* Keeps the aspect ratio of the brush stroke */
 }

@@ -1,0 +1,30 @@
+:root {
+    /* Background colors */
+    --bs-body-bg: #F9F7F7;
+    --bs-light: #F9F7F7; /* To match the overall background */
+
+    /* Primary colors */
+    --bs-primary: #3F72AF;
+    --bs-primary-bg-subtle: #DBE2EF; /* Lighter background for subtle uses of primary color */
+
+    /* Secondary colors */
+    --bs-secondary: #DBE2EF;
+    --bs-secondary-bg-subtle: #F9F7F7; /* Subtle background for secondary color */
+
+    /* Text colors */
+    --bs-body-color: #112D4E; /* Main text color */
+    --bs-dark: #112D4E; /* Alternative dark color */
+    
+    /* Borders and accents */
+    --bs-border-color: #DBE2EF; /* Soft border color */
+    
+    /* Button colors */
+    --bs-btn-primary-bg: #3F72AF;
+    --bs-btn-primary-border-color: #3F72AF;
+    --bs-btn-primary-hover-bg: #112D4E; /* Darker shade on hover */
+    --bs-btn-primary-hover-border-color: #112D4E;
+    
+    /* Link colors */
+    --bs-link-color: #3F72AF;
+    --bs-link-hover-color: #112D4E;
+}

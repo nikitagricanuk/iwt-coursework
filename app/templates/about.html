@@ -1,1 +1,25 @@
 {% extends 'layouts/main.html' %}
+{% block content %}
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="container">
+            <div class="row my-3">
+                <div class="col-auto">
+                    <img class="rounded" src="{{ url_for("static", filename="images/author.jpeg") }}" alt="authors photo" height="auto" width="250px">
+                </div>
+                <div class="col-lg-6">
+                    <h1>About me</h1>
+                    <p>
+                        Привет! Меня зовут Никита, я студент ИРНИТУ, увлеченный 
+                        программированием и DevOps. Я работаю над этим сайтом в рамках курсовой работы, 
+                        но это не основная задача этого сайта, также он является простым способом 
+                        познакомится с нашим решением которое мы с командой разработали в рамках хакатона 
+                        MORE.Tech от ВТБ. Надеюсь, данный сайт вам понравится.
+                    </p>
+                    <p>
+                        Спасибо, что заглянули!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

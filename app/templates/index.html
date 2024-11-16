@@ -1,24 +1,64 @@
 {% extends 'layouts/main.html' %}
 {% block content %}
-    <link rel="stylesheet" href="{{ url_for("static", filename="css/index.css") }}" />
-    <div class="main-container">
-        <div class="text-container">
-            <p class="text-body">
-                Vault — это современная система управления секретами, созданная в рамках хакатона MORE.Tech от ВТБ 
-                как альтернатива коммерческому решению HashiCorp Vault. Наша платформа предлагает удобный и гибкий 
-                способ работы с секретами для ваших приложений. С Vault вы можете:
-            </p>
-            <ul>
-                <li>Создавать и организовывать секретные данные под ваши нужды;</li>
-                <li>Читать информацию безопасно, когда это необходимо;</li>
-                <li>С легкостью управлять секретами и удалять устаревшие данные.</li>
-            </ul>
-            <p class="text-body">
-                Мы стремимся предоставить функционал, позволяющий разработчикам полностью контролировать доступ к конфиденциальным 
-                данным, обеспечивая высокий уровень безопасности и простоту интеграции. Vault — это ваш инструмент для безопасного 
-                хранения секретов, который можно адаптировать под различные задачи и требования ваших приложений.
-            </p>
+    <div class="container">
+        <div class="row my-3">
+            <div class="col">
+                <h1>Safety matters</h1>
+                <p>
+                    In 2023, the average cost of a data breach reached an all-time high 
+                    of $4.45 million, marking a 15.3% increase from 2020. 
+                    <span class="cite">[Source: 
+                        <a href="https://www.upguard.com/blog/cost-of-data-breach">UpGuard</a>]
+                    </span> 
+                    Alarmingly, 74% of all breaches involved the human element, underscoring 
+                    the critical need for robust secret management solutions. 
+                    <span class="cite">[Source: 
+                        <a href="https://www.infosecinstitute.com/resources/security-awareness/human-error-responsible-data-breaches/">Infosec Institute</a>]
+                    </span>
+                </p>
+                <p>
+                    Introducing Vault—a modern secret management system developed during the 
+                    MORE.Tech hackathon by VTB as an alternative to commercial solutions like 
+                    HashiCorp Vault. Our platform offers a user-friendly and flexible approach to 
+                    handling secrets for your applications. With Vault, you can:
+                </p>
+            </div>
+            <div class="col">
+                <img class="rounded" src="{{ url_for("static", filename="images/vault.png") }}" alt="Vault" height="400px" width="400px">
+            </div>
         </div>
-        <img src="{{ url_for("static", filename="images/vault.png") }}" alt="Vault" />
+        <div class="row justify-content-evenly">
+            <div class="col-3 d-flex flex-column align-items-center text-center">
+                <img src="{{ url_for('static', filename='icons/rocket.gif') }}" alt="rocket" height="64px" width="64px">
+                <h5>Incredibly Fast</h5>
+                <ul class="list-unstyled">
+                    <li>Quick deployment and integration</li>
+                    <li>Optimized for high-performance operations</li>
+                    <li>Minimal latency in secret retrieval</li>
+                </ul>
+            </div>
+            <div class="col-3 d-flex flex-column align-items-center text-center">
+                <img src="{{ url_for('static', filename='icons/handshake.gif') }}" alt="handshake" height="64px" width="64px">
+                <h5>Trustworthy</h5>
+                <ul class="list-unstyled">
+                    <li>Robust encryption standards</li>
+                    <li>And something else, come up with this later...</li>
+                </ul>
+            </div>
+            <div class="col-3 d-flex flex-column align-items-center text-center">
+                <img src="{{ url_for('static', filename='icons/airplane.gif') }}" alt="shield" height="64px" width="64px">
+                <h5>Flexible</h5>
+                <ul class="list-unstyled">
+                    <li>Seamless integration via RESTful API</li>
+                    <li>Customizable to meet diverse application needs</li>
+                </ul>
+            </div>
+        </div>
+        <p>
+            We are committed to providing developers with complete control over access 
+            to confidential data, ensuring a high level of security and seamless 
+            integration. Vault is your adaptable tool for secure secret storage, designed 
+            to meet the diverse requirements of your applications.
+        </p>
     </div>
 {% endblock %}
