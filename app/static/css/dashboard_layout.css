@@ -4,14 +4,18 @@
     align-items: center; /* Centers the content vertically */
     width: 100%; /* Makes the element take the full width of the parent */
     padding: 10px 15px;
-    border-radius: 8px; /* Keeps the rounded corners */
-    transition: background-color 0.3s ease; /* Smooth transition */
+    border: 1px solid transparent; /* Start with a transparent border to prevent elements around from shifting when the actual border appears */
+    border-radius: 8px;
+    transition: background-color 0.3s ease, border 0.3s ease; /* Smooth transition */
 
     text-align: center;
 }
 
 .sidebar-link:hover {
-    background-color: rgba(63, 114, 175, 0.6); /* Light blue background, adjust color and opacity */
+    background-color: rgba(63, 114, 175, 0.3); 
+    border: 1px solid rgb(64, 114, 175);
+    /* background-color: rgba(30, 115, 46, 0.1); TODO: Active menu entries should be blue, not active ones on hover should be green
+    border: 1px solid rgb(30, 115, 46); */
 }
 
 .sidebar {
@@ -31,5 +35,10 @@
 }
 
 .sidebar-collapsed-link:hover {
-    background-color: rgba(63, 114, 175, 0.6); /* Light blue background, adjust color and opacity */
+    background-color: rgba(63, 114, 175, 0.1); 
+}
+
+.sidebar-link-active {
+    background-color: rgba(63, 114, 175, 0.3); 
+    border: 1px solid rgb(64, 114, 175);
 }
