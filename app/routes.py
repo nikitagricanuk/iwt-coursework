@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template, send_from_directory, request, flash, redirect, url_for, make_response, session
 import os.path
-from app.api.requests import login as backend_login
-from app.api.requests import register as backend_register
+from app.api.users import login as backend_login
+from app.api.users import register as backend_register
+from app.api.secrets import create_secret, list_all_secrets
 
 # Create a blueprint
 main = Blueprint('main', __name__)
@@ -12,10 +13,26 @@ def global_context():
         { "title": "Home", "url": "/" },
         { "title": "Users", "url": "/users" },
         { "title": "Secrets (Shhh!!)", "url": "/secrets" },
+        { "title": "Glossary", "url": "/glossary" },
         { "title": "About", "url": "/about" },
     ]
+    pages = [
+        { "title": "Home", "url": "/" },
+        { "title": "Users", "url": "/users" },
+        { "title": "Secrets (Shhh!!)", "url": "/secrets" },
+        { "title": "Glossary", "url": "/glossary" },
+        { "title": "About", "url": "/about" },
+        { "title": "Login", "url": "/login"},
+        { "title": "Sign Up", "url": "/register"},
+        
+        { "title": "Home", "url": "/dashboard" },
+        { "title": "Secrets", "url": "/dashboard/secrets"},
+        { "title": "Users", "url": "/dashboard/users"},
+        { "title": "Account", "url": "/dashboard/account"},
+    ]
     return {
-        "nav": nav
+        "nav": nav,
+        "pages": pages
     }
     
 @main.context_processor
@@ -28,19 +45,23 @@ def session_context():
 
 @main.route('/')
 async def home():
-    return render_template('index.html', name="Home")
+    return render_template('index.html')
 
 @main.route('/secrets')
 async def secrets():
-    return render_template('secrets.html', name="Secrets (Shhh!!)")
+    return render_template('secrets.html')
 
 @main.route('/users')
 async def users():
-    return render_template('users.html', name="Users")
+    return render_template('users.html')
+
+@main.route('/glossary')
+async def glossary():
+    return render_template('glossary.html')
 
 @main.route('/about')
 async def about():
-    return render_template('about.html', name="About")
+    return render_template('about.html')
 
 @main.route('/login', methods=['GET', 'POST'])
 async def login():
@@ -52,11 +73,11 @@ async def login():
         if token is not None:  # Then everything is okay, proceed to set session data and redirect user to the home page
             session['username'] = username
             session['token'] = token
-            return redirect(url_for('main.home'))
+            return redirect(url_for('main.dashboard'))
         else:
             flash('Invalid credentials', 'danger')
     
-    return render_template('login.html', name="Login")
+    return render_template('login.html')
 
 
 @main.route('/register', methods=['GET', 'POST'])
@@ -70,11 +91,11 @@ async def register():
         if token is not None:
             session['username'] = username
             session['token'] = token
-            return redirect(url_for('main.home'))
+            return redirect(url_for('main.dashboard'))
         else:
             flash('Something went wrong', 'danger')
     
-    return render_template('register.html', name="Sign Up")
+    return render_template('register.html')
 
 @main.route('/logout')
 async def logout():
@@ -83,7 +104,35 @@ async def logout():
 
 @main.route('/dashboard')
 async def dashboard():
-    return render_template('dashboard/home.html', name="Dashboard")
+    return render_template('dashboard/home.html')
+
+@main.route('/dashboard/secrets')
+async def dashboard_secrets():
+    records = await list_all_secrets(session["token"])
+    
+    # if request.method == 'POST':
+    #     name = request.form.get('name')
+    #     form_data = request.form.get('data')
+    #     description = request.form.get('password')
+    #     ttl = request.form.get('ttl')
+    #     token = session['token']
+    #     response =  await create_secret(name, form_data, description, ttl,  token)
+        
+    #     if response is not None:
+    #         session['username'] = username
+    #         session['token'] = token
+    #         return redirect(url_for('main.dashboard'))
+    #     else:
+    #         flash('Something went wrong', 'danger')
+    return render_template('dashboard/secrets.html', records=records)
+
+@main.route('/dashboard/users')
+async def dashboard_users():
+    return render_template('dashboard/users.html')
+
+@main.route('/dashboard/account')
+async def dashboard_account():
+    return render_template('dashboard/account.html')
 
 @main.route('/favicon.ico')
 async def favicon():
