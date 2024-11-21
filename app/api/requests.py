@@ -1,25 +1,5 @@
 import requests
-from config import BACKEND_URL, BACKEND_USERNAME, BACKEND_PASSWORD
-
-async def login(username: str, password: str):
-    payload = f"username={username}&password={password}"
-    
-    response = await send_post_request("v1/auth/token/create", payload, False, "x-www-form-urlencoded")
-    if response is not None:
-        return response["session_id"] # return token
-
-async def register(username: str, email: str, password: str):
-    # Request primary token using system account
-    token = await login(BACKEND_USERNAME, BACKEND_PASSWORD)
-    
-    payload = {
-        "username": username,
-        "email": email,
-        # since our backend doesn't support ACL yet, it's doesn't matter which role is used
-        "roles": ["user"], 
-        "password": password
-    }
-    return await send_post_request("v1/auth/users/create", payload, True, "json", token)
+from config import BACKEND_URL
 
 async def send_post_request(endpoint: str, payload, json: bool, content_type: str, token: str = None):
     url = f"{BACKEND_URL}/{endpoint}"
@@ -33,7 +13,9 @@ async def send_post_request(endpoint: str, payload, json: bool, content_type: st
             response = requests.post(url, json=payload, headers=headers)
         response = requests.post(url, data=payload, headers=headers)
         response.raise_for_status()
-        return response.json()
+        
+        return response.json() if response.status_code == 200 else None
+    
     except requests.exceptions.RequestException as e:
         print(f"Error creating request: {e}")
         return None
