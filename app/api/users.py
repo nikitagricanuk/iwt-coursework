@@ -1,7 +1,6 @@
 from app.api.requests import send_post_request
 from config import BACKEND_PASSWORD, BACKEND_USERNAME
 
-
 async def login(username: str, password: str):
     payload = f"username={username}&password={password}"
     
@@ -10,7 +9,7 @@ async def login(username: str, password: str):
         return response["session_id"] # return token
 
 async def register(username: str, email: str, password: str):
-    # Request primary token using system account
+    # Request primary token using the system account
     token = await login(BACKEND_USERNAME, BACKEND_PASSWORD)
     
     payload = {
@@ -21,3 +20,16 @@ async def register(username: str, email: str, password: str):
         "password": password
     }
     return await send_post_request("v1/auth/users/create", payload, True, "json", token)
+
+async def renew_token(token: str):
+    """
+    Renew the token.
+
+    Args:
+        token (str): The token to renew
+
+    Returns:
+        dict: A JSON from a server containing the renewed token information
+        NoneType: If the token is invalid
+    """
+    return await send_post_request("v1/auth/token/renew", None, False, "json", token)
