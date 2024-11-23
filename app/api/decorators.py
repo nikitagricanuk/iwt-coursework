@@ -16,9 +16,8 @@ def check_session(func):
     """
     @wraps(func)
     async def wrapper(*args, **kwargs):
-        print(session["token"])
+        # Renew the token if valid, otherwise the function will return None
         status = await renew_token(session["token"])
-        print(status)
         if status is None:
             flash('Your session has expired, please log in again', 'danger')
             return redirect(url_for('main.login'))
