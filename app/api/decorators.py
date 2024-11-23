@@ -2,7 +2,7 @@ from functools import wraps
 
 from flask import flash, redirect, session, url_for
 
-from app.api.users import check_token
+from app.api.users import renew_token
 
 
 def check_session(func):
@@ -17,7 +17,7 @@ def check_session(func):
     @wraps(func)
     async def wrapper(*args, **kwargs):
         print(session["token"])
-        status = await check_token(session["token"])
+        status = await renew_token(session["token"])
         print(status)
         if status is None:
             flash('Your session has expired, please log in again', 'danger')
