@@ -3,6 +3,7 @@ import os.path
 from app.api.users import login as backend_login
 from app.api.users import register as backend_register
 from app.api.secrets import create_secret, list_all_secrets
+from app.api.decorators import check_session
 
 # Create a blueprint
 main = Blueprint('main', __name__)
@@ -103,10 +104,12 @@ async def logout():
     return redirect(url_for('main.home'))
 
 @main.route('/dashboard')
+@check_session
 async def dashboard():
     return render_template('dashboard/home.html')
 
 @main.route('/dashboard/secrets')
+@check_session
 async def dashboard_secrets():
     records = await list_all_secrets(session["token"])
     
@@ -127,10 +130,12 @@ async def dashboard_secrets():
     return render_template('dashboard/secrets.html', records=records)
 
 @main.route('/dashboard/users')
+@check_session
 async def dashboard_users():
     return render_template('dashboard/users.html')
 
 @main.route('/dashboard/account')
+@check_session
 async def dashboard_account():
     return render_template('dashboard/account.html')
 
