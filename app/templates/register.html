@@ -1,7 +1,7 @@
 {% extends 'layouts/login.html' %}
 {% block content %}
-<h2 class="card-title">Register</h2>
-<form>
+<h2 class="card-title">Sign Up</h2>
+<form action="/register" method="POST">
     <div class="mb-3">
         <label for="username" class="form-label">Username</label>
         <input type="username" class="form-control" id="username" required>
