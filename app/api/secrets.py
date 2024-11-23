@@ -17,9 +17,7 @@ async def create_secret(name: str, data, description: str, token: str, ttl: int 
 
     response =  await send_post_request("v1/secrets/create", payload, True, "json", token)
     
-    response_deserialized = loads(response) if response else None
-    
-    return response_deserialized
+    return loads(response) if response else None
 
 async def list_all_secrets(token: str):
     return await send_get_request("v1/secrets", token)
