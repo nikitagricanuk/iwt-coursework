@@ -11,7 +11,8 @@ async def send_post_request(endpoint: str, payload, json: bool, content_type: st
     try:
         if json:
             response = requests.post(url, json=payload, headers=headers)
-        response = requests.post(url, data=payload, headers=headers)
+        else:
+            response = requests.post(url, data=payload, headers=headers)
         response.raise_for_status()
         
         return response.json() if response.status_code == 200 else None

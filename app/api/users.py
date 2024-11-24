@@ -19,7 +19,8 @@ async def register(username: str, email: str, password: str):
         "roles": ["user"], 
         "password": password
     }
-    return await send_post_request("v1/auth/users/create", payload, True, "json", token)
+    response = await send_post_request("v1/auth/users/create", payload, True, "json", token)
+    return response if response is None else await login(username, password)
 
 async def renew_token(token: str):
     """
