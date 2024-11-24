@@ -16,14 +16,6 @@
         <div class="content">
             {% block content %}{% endblock %}
         </div>
-        <div class="container-fluid bg-primary-subtle d-inline-flex align-items-center">
-            <img class="path-container-icon" src="{{ url_for('static', filename='icons/home.svg') }}" alt="home icon" width="32" height="32">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item active" aria-current="page">{{name}}</li>
-                </ol>
-            </nav>
-        </div>
 
         {% include "components/_footer.html" %}
 
