@@ -128,8 +128,12 @@
                     </li>
                 </ul>
             </div>
+            <!-- Content section -->
             <div class="col">
-                {% block content %}{% endblock %}
+                {% include "components/_flash.html" %}
+                <div class="container my-2 mx-2">
+                    {% block content %}{% endblock %}
+                </div>
             </div>
         </div>
     </div>
