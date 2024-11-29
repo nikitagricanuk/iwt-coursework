@@ -35,3 +35,18 @@ async def send_get_request(endpoint: str, token: str):
     except requests.exceptions.RequestException as e:
         print(f"Error creating secret: {e}")
         return None
+
+async def send_delete_request(endpoint: str, token: str):
+    url = f"{BACKEND_URL}/{endpoint}"
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {token}"
+    }
+    
+    try:
+        response = requests.delete(url, headers=headers)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        print(f"Error creating secret: {e}")
+        return None
