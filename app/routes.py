@@ -1,3 +1,4 @@
+import ast
 from flask import Blueprint, render_template, send_from_directory, request, flash, redirect, url_for, make_response, session
 import os.path
 from app.api.users import login as backend_login
@@ -115,11 +116,26 @@ async def logout():
 async def dashboard():
     return render_template('dashboard/home.html')
 
-@main.route('/dashboard/secrets')
+@main.route('/dashboard/secrets', methods=['GET', 'POST'])
 @check_session
 async def dashboard_secrets():
-    records = await list_all_secrets(session["token"])
-
+    token =  session['token']
+    records = await list_all_secrets(token)
+    if request.method == 'POST':
+        name = request.form.get('name')
+        description = request.form.get('description')
+        data = request.form.get('data')
+        
+        response = await create_secret(name, data, description, token)
+        
+        if response is not None:
+            flash('Secret created successfully. Please reload the page.', 'success')
+        else:
+            flash('Something went wrong', 'danger')
+            
+        # Redirect to avoid form resubmission on reload
+        return redirect(url_for('main.dashboard_secrets'))
+            
     return render_template('dashboard/secrets.html', records=records)
 
 @main.route('/dashboard/users')
