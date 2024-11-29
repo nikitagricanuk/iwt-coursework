@@ -4,12 +4,13 @@ from app.api.users import login as backend_login
 from app.api.users import register as backend_register
 from app.api.secrets import create_secret, list_all_secrets
 from app.api.decorators import check_session
+from config import BACKEND_URL
 
 # Create a blueprint
 main = Blueprint('main', __name__)
 
 @main.context_processor
-def global_context():
+def pages_context():
     nav = [
         { "title": "Home", "url": "/" },
         { "title": "Users", "url": "/users" },
@@ -42,6 +43,12 @@ def session_context():
         'logged_in': session.get('token') is not None,
         'username': session.get('username'),
         'token': session.get('token')
+    }
+
+@main.context_processor
+def backend_context():
+    return {
+        'backend_url': f"{BACKEND_URL}"
     }
 
 @main.route('/')
@@ -112,21 +119,7 @@ async def dashboard():
 @check_session
 async def dashboard_secrets():
     records = await list_all_secrets(session["token"])
-    
-    # if request.method == 'POST':
-    #     name = request.form.get('name')
-    #     form_data = request.form.get('data')
-    #     description = request.form.get('password')
-    #     ttl = request.form.get('ttl')
-    #     token = session['token']
-    #     response =  await create_secret(name, form_data, description, ttl,  token)
-        
-    #     if response is not None:
-    #         session['username'] = username
-    #         session['token'] = token
-    #         return redirect(url_for('main.dashboard'))
-    #     else:
-    #         flash('Something went wrong', 'danger')
+
     return render_template('dashboard/secrets.html', records=records)
 
 @main.route('/dashboard/users')
