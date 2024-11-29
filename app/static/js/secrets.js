@@ -1,3 +1,27 @@
+function addAlert(type, message) {
+    // Locate the existing alert container
+    const alertContainer = document.querySelector('.alert-container');
+
+    if (alertContainer) {
+        // Clear existing alerts
+        alertContainer.innerHTML = '';
+
+        // Create a new alert
+        const alert = document.createElement('div');
+        alert.className = `alert alert-${type} alert-dismissible fade show`;
+        alert.setAttribute('role', 'alert');
+        alert.innerHTML = `
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        `;
+
+        // Append the alert to the container
+        alertContainer.appendChild(alert);
+    } else {
+        console.error('Alert container not found!');
+    }
+}
+
 function get_secret(secretId) {
     fetch(`${backend_url}/v1/secrets/${secretId}`, {
         method: 'GET',
@@ -31,23 +55,33 @@ function get_secret(secretId) {
             offcanvas.show();
         })
         .catch(error => {
-            // Locate the existing alert container
-    const alertContainer = document.querySelector('.alert-container');
+            addAlert('danger', 'Something went wrong. Reloading the page may resolve the issue.');
+        });
+}
 
-    if (alertContainer) {
-        // Add a Bootstrap alert dynamically using the pre-existing Jinja structure
-        const alert = document.createElement('div');
-        alert.className = 'alert alert-danger alert-dismissible fade show';
-        alert.setAttribute('role', 'alert');
-        alert.innerHTML = `
-            Something went wrong. Reloading the page may resolve the issue.
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        `;
-
-        // Append the alert to the container
-        alertContainer.appendChild(alert);
-        } else {
-            console.error('Alert container not found!');
+function delete_secret(secretId) {
+    fetch(`${backend_url}/v1/secrets/${secretId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
         }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to delete secret. Please try again later.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Add success alert
+            addAlert('success', 'Secret deleted successfully.');
+            setTimeout(() => {
+                location.reload(); // Reloads the current page
+            }, 1000); // Delay to allow the user to see the success message
+        })
+        .catch(error => {
+            // Add error alert
+            addAlert('danger', 'Something went wrong. Reloading the page may resolve the issue.');
         });
 }
