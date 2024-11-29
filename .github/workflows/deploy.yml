@@ -27,7 +27,7 @@ jobs:
         ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
           cd /home/${{ secrets.SERVER_USER }}/frontend
           source .env
-          sudo docker compose -f compose.yml down
-          sudo docker compose -f compose.yml pull
-          sudo docker compose -f compose.yml up -d --build
+          sudo docker compose -f compose.yaml down
+          sudo docker compose -f compose.yaml pull
+          sudo docker compose -f compose.yaml up -d --build
         EOF
