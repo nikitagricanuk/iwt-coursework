@@ -1,4 +1,4 @@
-function loadSecretAndShowOffcanvas(secretId) {
+function get_secret(secretId) {
     fetch(`${backend_url}/v1/secrets/${secretId}`, {
         method: 'GET',
         headers: {
