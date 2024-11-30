@@ -6,7 +6,7 @@ from app.api.users import register as backend_register
 from app.api.secrets import create_secret, list_all_secrets
 from app.api.decorators import check_session
 from config import BACKEND_URL
-from . import cache
+from .extensions import cache
 
 # Create a blueprint
 main = Blueprint('main', __name__)
