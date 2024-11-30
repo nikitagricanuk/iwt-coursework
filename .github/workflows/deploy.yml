@@ -24,24 +24,24 @@ jobs:
 
     - name: Create .env
       run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-          cd /home/${{ secrets.SERVER_USER }}/frontend
-          cat << EOF > .env
-          # App configuration
-          BACKEND_URL=${{ secrets.BACKEND_URL }}
-          BACKEND_USERNAME=${{ secrets.BACKEND_USERNAME }}
-          BACKEND_PASSWORD=${{ secrets.BACKEND_PASSWORD }}
+        ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'SSH_EOF'
+        cd /home/${{ secrets.SERVER_USER }}/frontend
+        cat << 'ENV_EOF' > .env
+        # App configuration
+        BACKEND_URL=${{ secrets.BACKEND_URL }}
+        BACKEND_USERNAME=${{ secrets.BACKEND_USERNAME }}
+        BACKEND_PASSWORD=${{ secrets.BACKEND_PASSWORD }}
 
-          SECRET_KEY=${{ secrets.COOKIES_SECRET_KEY}}
+        SECRET_KEY=${{ secrets.COOKIES_SECRET_KEY}}
 
-          # Redis configuration
-          REDIS_HOST=${{ secrets.REDIS_HOST }}
-          REDIS_PORT=${{ secrets.REDIS_PORT }}
+        # Redis configuration
+        REDIS_HOST=${{ secrets.REDIS_HOST }}
+        REDIS_PORT=${{ secrets.REDIS_PORT }}
 
-          # Caching configuration
-          CACHE_DEFAULT_TIMEOUT=${{ secrets.CACHE_DEFAULT_TIMEOUT }}
-          EOF
-        EOF
+        # Caching configuration
+        CACHE_DEFAULT_TIMEOUT=${{ secrets.CACHE_DEFAULT_TIMEOUT }}
+        ENV_EOF
+        SSH_EOF
 
     - name: Check and Create Docker Network
       run: |
