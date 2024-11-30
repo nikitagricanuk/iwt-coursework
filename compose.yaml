@@ -12,6 +12,15 @@ services:
       - default
       - vault-network
 
+  redis:
+    image: mirror.gcr.io/redis:7.4
+    restart: always
+    volumes:
+      - redisdata:/data
+
 networks:
   vault-network:
     external: true
+
+volumes:
+  redisdata:
