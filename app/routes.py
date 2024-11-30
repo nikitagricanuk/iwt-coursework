@@ -1,21 +1,15 @@
 import ast
 from flask import Blueprint, render_template, send_from_directory, request, flash, redirect, url_for, make_response, session
 import os.path
-from flask_caching import Cache
 from app.api.users import login as backend_login
 from app.api.users import register as backend_register
 from app.api.secrets import create_secret, list_all_secrets
 from app.api.decorators import check_session
-from config import BACKEND_URL, REDIS_HOST, REDIS_PORT
+from config import BACKEND_URL
+from . import cache
 
 # Create a blueprint
 main = Blueprint('main', __name__)
-
-# Configure Flask-Caching with Redis
-main.config['CACHE_TYPE'] = 'redis'
-main.config['CACHE_REDIS_HOST'] = REDIS_HOST
-main.config['CACHE_REDIS_PORT'] = REDIS_PORT
-cache = Cache(main)
 
 @main.context_processor
 def pages_context():
