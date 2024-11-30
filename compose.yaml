@@ -1,5 +1,5 @@
 services:
-  vault:
+  frontend:
     build:
       dockerfile: Dockerfile
       context: .
@@ -8,3 +8,10 @@ services:
     env_file:
       - .env
     restart: always
+    networks:
+      - default
+      - vault-network
+
+networks:
+  vault-network:
+    external: true
