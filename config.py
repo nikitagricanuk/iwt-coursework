@@ -9,6 +9,7 @@ BACKEND_PASSWORD = os.getenv('BACKEND_PASSWORD')
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
+USE_REDIS = (os.getenv('USE_REDIS').lower() == 'true')
 REDIS_HOST = os.getenv('REDIS_HOST')
 REDIS_PORT = os.getenv('REDIS_PORT')
 
