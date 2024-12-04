@@ -56,27 +56,27 @@ def backend_context():
 @main.route('/')
 @cache.cached(timeout=60)
 async def home():
-    return render_template('index.html')
+    return render_template('index.html', name="Home")
 
 @main.route('/secrets')
 @cache.cached(timeout=60)
 async def secrets():
-    return render_template('secrets.html')
+    return render_template('secrets.html', name="Secrets (Shhh!!)")
 
 @main.route('/users')
 @cache.cached(timeout=60)
 async def users():
-    return render_template('users.html')
+    return render_template('users.html', name="Users")
 
 @main.route('/glossary')
 @cache.cached(timeout=60)
 async def glossary():
-    return render_template('glossary.html')
+    return render_template('glossary.html', name="Glossary")
 
 @main.route('/about')
 @cache.cached(timeout=60)
 async def about():
-    return render_template('about.html')
+    return render_template('about.html', name="About")
 
 @main.route('/login', methods=['GET', 'POST'])
 async def login():
