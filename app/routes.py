@@ -20,23 +20,15 @@ def pages_context():
         { "title": "Glossary", "url": "/glossary" },
         { "title": "About", "url": "/about" },
     ]
-    pages = [
-        { "title": "Home", "url": "/" },
-        { "title": "Users", "url": "/users" },
-        { "title": "Secrets (Shhh!!)", "url": "/secrets" },
-        { "title": "Glossary", "url": "/glossary" },
-        { "title": "About", "url": "/about" },
-        { "title": "Login", "url": "/login"},
-        { "title": "Sign Up", "url": "/register"},
-        
-        { "title": "Home", "url": "/dashboard" },
-        { "title": "Secrets", "url": "/dashboard/secrets"},
-        { "title": "Users", "url": "/dashboard/users"},
-        { "title": "Account", "url": "/dashboard/account"},
+    dash_nav = [
+        { "title": "Home", "url": "/dashboard", "icon": "house"},
+        { "title": "Secrets", "url": "/dashboard/secrets", "icon": "key"},
+        { "title": "Users", "url": "/dashboard/users", "icon": "people"},
+        { "title": "Account", "url": "/dashboard/account", "icon": "person-circle"},
     ]
     return {
         "nav": nav,
-        "pages": pages
+        "dash_nav": dash_nav
     }
     
 @main.context_processor
@@ -120,7 +112,7 @@ async def logout():
 @main.route('/dashboard')
 @check_session
 async def dashboard():
-    return render_template('dashboard/home.html')
+    return render_template('dashboard/home.html', name="Home")
 
 @main.route('/dashboard/secrets', methods=['GET', 'POST'])
 @check_session
@@ -142,17 +134,17 @@ async def dashboard_secrets():
         # Redirect to avoid form resubmission on reload
         return redirect(url_for('main.dashboard_secrets'))
             
-    return render_template('dashboard/secrets.html', records=records)
+    return render_template('dashboard/secrets.html', records=records, name="Secrets")
 
 @main.route('/dashboard/users')
 @check_session
 async def dashboard_users():
-    return render_template('dashboard/users.html')
+    return render_template('dashboard/users.html', name="Users")
 
 @main.route('/dashboard/account')
 @check_session
 async def dashboard_account():
-    return render_template('dashboard/account.html')
+    return render_template('dashboard/account.html', name="Account")
 
 @main.route('/favicon.ico')
 async def favicon():
