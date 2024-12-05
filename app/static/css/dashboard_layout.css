@@ -4,20 +4,51 @@
     align-items: center; /* Centers the content vertically */
     width: 100%; /* Makes the element take the full width of the parent */
     padding: 10px 15px;
-    border: 1px solid transparent; /* Start with a transparent border to prevent elements around from shifting when the actual border appears */
+    border: 1px solid transparent; /* Start with a transparent border */
     border-radius: 8px;
     transition: background-color 0.3s ease, border 0.3s ease; /* Smooth transition */
-
+    position: relative; /* Required for the pseudo-element */
+    overflow: hidden; /* Ensures the pseudo-element doesn't go outside the button */
     text-align: center;
 }
 
+/* Hover for non-active elements */
 .sidebar-link:hover {
-    background-color: rgba(63, 114, 175, 0.3); 
-    border: 1px solid rgb(64, 114, 175);
-    /* background-color: rgba(30, 115, 46, 0.1); TODO: Active menu entries should be blue, not active ones on hover should be green
-    border: 1px solid rgb(30, 115, 46); */
+    background-color: rgba(30, 115, 46, 0.1); /* Green for non-active links */
+    border: 1px solid rgb(30, 115, 46); /* Green border for hover */
 }
 
+/* Active state (page the user is on) */
+.sidebar-link-active {
+    display: flex; /* Use flexbox for alignment and stretching */
+    justify-content: center; /* Centers the content horizontally */
+    align-items: center; /* Centers the content vertically */
+    padding: 10px 15px;
+    border: 1px solid transparent; /* Start with a transparent border */
+    border-radius: 8px;
+    transition: background-color 0.3s ease, border 0.3s ease; /* Smooth transition */
+    position: relative; /* Required for the pseudo-element */
+    overflow: hidden; /* Ensures the pseudo-element doesn't go outside the button */
+    text-align: center;
+    background: none; /* No background by default */
+}
+
+.sidebar-link-active::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 7%; /* Adjust this percentage for the desired right-side fill */
+    height: 100%;
+    background-color: rgba(63, 114, 175, 0.5); /* Blue side fill */
+    z-index: -1; /* Places the fill behind the text */
+    transition: background-color 0.3s ease; /* Smooth transition for fill */
+}
+
+/* Active element hover */
+.sidebar-link-active:hover {
+    border: 1px solid rgb(64, 114, 175); /* Blue border on hover for active links */
+}
 .sidebar {
     min-width: 195px;
 }
@@ -36,9 +67,4 @@
 
 .sidebar-collapsed-link:hover {
     background-color: rgba(63, 114, 175, 0.1); 
-}
-
-.sidebar-link-active {
-    background-color: rgba(63, 114, 175, 0.3); 
-    border: 1px solid rgb(64, 114, 175);
 }
