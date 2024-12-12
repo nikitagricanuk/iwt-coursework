@@ -23,8 +23,6 @@ def pages_context():
     dash_nav = [
         { "title": "Home", "url": "/dashboard", "icon": "house"},
         { "title": "Secrets", "url": "/dashboard/secrets", "icon": "key"},
-        { "title": "Users", "url": "/dashboard/users", "icon": "people"},
-        { "title": "Account", "url": "/dashboard/account", "icon": "person-circle"},
     ]
     return {
         "nav": nav,
@@ -135,16 +133,6 @@ async def dashboard_secrets():
         return redirect(url_for('main.dashboard_secrets'))
             
     return render_template('dashboard/secrets.html', records=records, name="Secrets")
-
-@main.route('/dashboard/users')
-@check_session
-async def dashboard_users():
-    return render_template('dashboard/users.html', name="Users")
-
-@main.route('/dashboard/account')
-@check_session
-async def dashboard_account():
-    return render_template('dashboard/account.html', name="Account")
 
 @main.route('/favicon.ico')
 async def favicon():
