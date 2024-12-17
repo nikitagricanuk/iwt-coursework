@@ -1,12 +1,12 @@
 .sidebar-link {
-    display: flex; /* Use flexbox for alignment and stretching */
-    justify-content: center; /* Centers the content horizontally */
-    align-items: center; /* Centers the content vertically */
-    width: 100%; /* Makes the element take the full width of the parent */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
     padding: 10px 15px;
-    border: 1px solid transparent; /* Start with a transparent border */
+    border: 1px solid transparent; 
     border-radius: 8px;
-    transition: background-color 0.3s ease, border 0.3s ease; /* Smooth transition */
+    transition: background-color 0.3s ease, border 0.3s ease; 
     position: relative; /* Required for the pseudo-element */
     overflow: hidden; /* Ensures the pseudo-element doesn't go outside the button */
     text-align: center;
@@ -14,23 +14,23 @@
 
 /* Hover for non-active elements */
 .sidebar-link:hover {
-    background-color: rgba(30, 115, 46, 0.1); /* Green for non-active links */
-    border: 1px solid rgb(30, 115, 46); /* Green border for hover */
+    background-color: rgba(30, 115, 46, 0.1);
+    border: 1px solid rgb(30, 115, 46);
 }
 
 /* Active state (page the user is on) */
 .sidebar-link-active {
-    display: flex; /* Use flexbox for alignment and stretching */
-    justify-content: center; /* Centers the content horizontally */
-    align-items: center; /* Centers the content vertically */
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
     padding: 10px 15px;
     border: 1px solid transparent; /* Start with a transparent border */
     border-radius: 8px;
-    transition: background-color 0.3s ease, border 0.3s ease; /* Smooth transition */
-    position: relative; /* Required for the pseudo-element */
+    transition: background-color 0.3s ease, border 0.3s ease;
+    position: relative;
     overflow: hidden; /* Ensures the pseudo-element doesn't go outside the button */
     text-align: center;
-    background: none; /* No background by default */
+    background: none; 
 }
 
 .sidebar-link-active::after {
@@ -38,11 +38,11 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 7%; /* Adjust this percentage for the desired right-side fill */
+    width: 7%; 
     height: 100%;
-    background-color: rgba(63, 114, 175, 0.5); /* Blue side fill */
-    z-index: -1; /* Places the fill behind the text */
-    transition: background-color 0.3s ease; /* Smooth transition for fill */
+    background-color: rgba(63, 114, 175, 0.5);
+    z-index: -1; 
+    transition: background-color 0.3s ease;
 }
 
 /* Active element hover */
