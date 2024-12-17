@@ -3,7 +3,7 @@
         <div class="row mb-3">
             <div class="col-lg-3">
                 <div class="d-inline-flex mb-2 align-items-center text-body-emphasis" href="/">
-                    <img class="me-2" src="{{ url_for('static', filename='icons/logo.png') }}" alt="logo" width="32" height="32">
+                    <img class="me-2" src="{{ url_for('static', filename='icons/favicon.ico') }}" alt="logo" width="32" height="32">
                     <span class="fs-5 text-white">Vault</span>
                 </div>
                 <ul class="list-unstyled small">
@@ -19,14 +19,6 @@
                 <h5 class="align-items-center">Main website</h5>
                 {% include "components/_navigation.html" %}
             </div>
-            <div class="col-auto list-unstyled me-3">
-                <h5 class="align-items-center">Dashboard</h5>
-                {% for item in dash_nav %}
-                    <li class="nav-item">
-                        <a class="nav-link {% if item.title == name %}active brushstroke{% endif %}" aria-current="page" href="{{ item.url }}">{{ item.title }}</a>
-                    </li>
-                {% endfor %}
-            </div>
         </div>
         <div class="row justify-content-between">
             <div class="col-sm">
@@ -34,13 +26,13 @@
             </div>
             <div class="col-sm-2 justify-content-center">
                 <a href="https://vk.com/nikitagricanuk" target="_blank" class="text-decoration-none">
-                    <img src="{{ url_for("static", filename="icons/vk.png") }}" alt="vk icon" />
+                    <img src="{{ url_for("static", filename="icons/vk.svg") }}" alt="vk icon" />
                 </a>
                 <a href="https://t.me/nikitagricanuk" target="_blank" class="text-decoration-none">
-                    <img src="{{ url_for("static", filename="icons/telegram.png") }}" alt="telegram icon" />
+                    <img src="{{ url_for("static", filename="icons/telegram.svg") }}" alt="telegram icon" />
                 </a>
                 <a href="mailto:me@ngctl.ru" target="_blank" class="text-decoration-none">
-                    <img src="{{ url_for("static", filename="icons/mail.png") }}" alt="mail icon" />
+                    <img src="{{ url_for("static", filename="icons/mail.svg") }}" alt="mail icon" />
                 </a>
             </div>
         </div>
