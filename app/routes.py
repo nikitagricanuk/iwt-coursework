@@ -21,7 +21,7 @@ def pages_context():
         { "title": "About", "url": "/about" },
     ]
     dash_nav = [
-        { "title": "Home", "url": "/dashboard", "icon": "house"},
+        { "title": "Overview", "url": "/dashboard", "icon": "house"},
         { "title": "Secrets", "url": "/dashboard/secrets", "icon": "key"},
     ]
     return {
@@ -110,7 +110,7 @@ async def logout():
 @main.route('/dashboard')
 @check_session
 async def dashboard():
-    return render_template('dashboard/home.html', name="Home")
+    return render_template('dashboard/home.html', name="Overview")
 
 @main.route('/dashboard/secrets', methods=['GET', 'POST'])
 @check_session
