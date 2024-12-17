@@ -2,5 +2,4 @@
     <li class="nav-item">
         <a class="nav-link {% if item.title == name %}active brushstroke{% endif %}" aria-current="page" href="{{ item.url }}">{{ item.title }}</a>
     </li>
-    <!--<a href="{{item.url}}" {% if item.title == name %} class="active-link brushstroke" {% else %} class="not-active-link" {% endif %}>{{item.title}}</a>-->
 {% endfor %}
