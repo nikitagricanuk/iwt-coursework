@@ -9,10 +9,11 @@ main = Blueprint('main', __name__)
 def pages_context():
     nav = [
         { "title": "Главная", "url": "/" },
+        { "title": "Архитектура", "url": "/arch" },
         { "title": "Пользователи", "url": "/users" },
         { "title": "Секреты (Тсс!!)", "url": "/secrets" },
         { "title": "Глоссарий", "url": "/glossary" },
-        { "title": "Обо мне", "url": "/about" },
+        { "title": "Обо мне", "url": "/about" }
     ]
     return {
         "nav": nav,
@@ -21,6 +22,10 @@ def pages_context():
 @main.route('/')
 async def home():
     return render_template('index.html', name="Главная")
+
+@main.route('/arch')
+async def arch():
+    return render_template('arch.html', name="Архитектура")
 
 @main.route('/secrets')
 async def secrets():
