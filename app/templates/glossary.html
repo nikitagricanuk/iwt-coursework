@@ -2,35 +2,40 @@
 {% block content %}
     <div class="container my-3">
         <div>
-            <h5>Did you know that</h5>
-            <h1>Glossary</h1>
-            <p>noun: A list of often difficult or specialized words with their definitions, often placed at the back of a book.</p>
+            <h5>Знаете ли вы, что</h5>
+            <h1>Глоссарий</h1>
+            <p>существительное: Список часто сложных или специализированных слов с их определениями, часто размещаемый в конце книги.</p>
         </div>
         <div class="accordion" id="usersAccordion">
+            <!-- Data Breach -->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingDataBreach">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#dataBreach" aria-expanded="true" aria-controls="dataBreach">
-                        Data Breach
+                        Утечка Данных
                     </button>
                 </h2>
                 <div id="dataBreach" class="accordion-collapse collapse show" aria-labelledby="headingDataBreach" data-bs-parent="#usersAccordion">
                     <div class="accordion-body">
-                        The unauthorized access or disclosure of confidential information, often leading to financial and reputational damage.
+                        Несанкционированный доступ или раскрытие конфиденциальной информации, часто приводящее к финансовым потерям и ущербу репутации.
                     </div>
                 </div>
             </div>
+
+            <!-- Secret Management -->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingSecretManagement">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#secretManagement" aria-expanded="false" aria-controls="secretManagement">
-                        Secret Management
+                        Управление Секретами
                     </button>
                 </h2>
                 <div id="secretManagement" class="accordion-collapse collapse" aria-labelledby="headingSecretManagement" data-bs-parent="#usersAccordion">
                     <div class="accordion-body">
-                        The practice of securely storing, accessing, and sharing sensitive information such as passwords, API keys, and certificates.
+                        Практика безопасного хранения, доступа и обмена конфиденциальной информацией, такой как пароли, API-ключи и сертификаты.
                     </div>
                 </div>
             </div>
+
+            <!-- Vault -->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingVault">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#vault" aria-expanded="false" aria-controls="vault">
@@ -39,22 +44,26 @@
                 </h2>
                 <div id="vault" class="accordion-collapse collapse" aria-labelledby="headingVault" data-bs-parent="#usersAccordion">
                     <div class="accordion-body">
-                        A system or software designed for securely managing secrets and access controls for applications.
+                        Система или программное обеспечение, предназначенное для безопасного управления секретами и контроля доступа для приложений.
                     </div>
                 </div>
             </div>
+
+            <!-- MORE.Tech Hackathon -->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingMoreTech">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#moreTech" aria-expanded="false" aria-controls="moreTech">
-                        MORE.Tech Hackathon
+                        Хакатон MORE.Tech
                     </button>
                 </h2>
                 <div id="moreTech" class="accordion-collapse collapse" aria-labelledby="headingMoreTech" data-bs-parent="#usersAccordion">
                     <div class="accordion-body">
-                        An innovation event where teams develop prototypes and solutions, in this case, hosted by VTB.
+                        Инновационное мероприятие, где команды разрабатывают прототипы и решения, организованное ВТБ.
                     </div>
                 </div>
             </div>
+
+            <!-- HashiCorp Vault -->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingHashiCorp">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hashiCorp" aria-expanded="false" aria-controls="hashiCorp">
@@ -63,22 +72,26 @@
                 </h2>
                 <div id="hashiCorp" class="accordion-collapse collapse" aria-labelledby="headingHashiCorp" data-bs-parent="#usersAccordion">
                     <div class="accordion-body">
-                        A popular commercial tool for secure secret management, providing encryption and access control features.
+                        Популярный коммерческий инструмент для безопасного управления секретами, предоставляющий функции шифрования и контроля доступа.
                     </div>
                 </div>
             </div>
+
+            <!-- Encryption -->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingEncryption">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#encryption" aria-expanded="false" aria-controls="encryption">
-                        Encryption
+                        Шифрование
                     </button>
                 </h2>
                 <div id="encryption" class="accordion-collapse collapse" aria-labelledby="headingEncryption" data-bs-parent="#usersAccordion">
                     <div class="accordion-body">
-                        The process of converting information into a coded format to prevent unauthorized access.
+                        Процесс преобразования информации в закодированный формат для предотвращения несанкционированного доступа.
                     </div>
                 </div>
             </div>
+
+            <!-- RESTful API -->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingRestfulAPI">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#restfulAPI" aria-expanded="false" aria-controls="restfulAPI">
@@ -87,31 +100,35 @@
                 </h2>
                 <div id="restfulAPI" class="accordion-collapse collapse" aria-labelledby="headingRestfulAPI" data-bs-parent="#usersAccordion">
                     <div class="accordion-body">
-                        An application programming interface (API) that follows REST principles, allowing applications to communicate seamlessly over the web.
+                        Интерфейс прикладного программирования (API), следующий принципам REST, позволяющий приложениям беспрепятственно обмениваться данными через веб.
                     </div>
                 </div>
             </div>
+
+            <!-- Latency -->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingLatency">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#latency" aria-expanded="false" aria-controls="latency">
-                        Latency
+                        Задержка
                     </button>
                 </h2>
                 <div id="latency" class="accordion-collapse collapse" aria-labelledby="headingLatency" data-bs-parent="#usersAccordion">
                     <div class="accordion-body">
-                        The delay or time taken for a system to process a request and respond.
+                        Время, необходимое системе для обработки запроса и ответа на него.
                     </div>
                 </div>
             </div>
+
+            <!-- Seamless Integration -->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingSeamlessIntegration">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#seamlessIntegration" aria-expanded="false" aria-controls="seamlessIntegration">
-                        Seamless Integration
+                        Бесшовная Интеграция
                     </button>
                 </h2>
                 <div id="seamlessIntegration" class="accordion-collapse collapse" aria-labelledby="headingSeamlessIntegration" data-bs-parent="#usersAccordion">
                     <div class="accordion-body">
-                        The ability to incorporate a tool or system into existing applications without significant effort or disruption.
+                        Возможность интегрировать инструмент или систему в существующие приложения без значительных усилий или перебоев.
                     </div>
                 </div>
             </div>

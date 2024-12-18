@@ -8,11 +8,11 @@ main = Blueprint('main', __name__)
 @main.context_processor
 def pages_context():
     nav = [
-        { "title": "Home", "url": "/" },
-        { "title": "Users", "url": "/users" },
-        { "title": "Secrets (Shhh!!)", "url": "/secrets" },
-        { "title": "Glossary", "url": "/glossary" },
-        { "title": "About", "url": "/about" },
+        { "title": "Главная", "url": "/" },
+        { "title": "Пользователи", "url": "/users" },
+        { "title": "Секреты (Тсс!!)", "url": "/secrets" },
+        { "title": "Глоссарий", "url": "/glossary" },
+        { "title": "Обо мне", "url": "/about" },
     ]
     return {
         "nav": nav,
@@ -20,23 +20,23 @@ def pages_context():
 
 @main.route('/')
 async def home():
-    return render_template('index.html', name="Home")
+    return render_template('index.html', name="Главная")
 
 @main.route('/secrets')
 async def secrets():
-    return render_template('secrets.html', name="Secrets (Shhh!!)")
+    return render_template('secrets.html', name="Секреты (Тсс!!)")
 
 @main.route('/users')
 async def users():
-    return render_template('users.html', name="Users")
+    return render_template('users.html', name="Пользователи")
 
 @main.route('/glossary')
 async def glossary():
-    return render_template('glossary.html', name="Glossary")
+    return render_template('glossary.html', name="Глоссарий")
 
 @main.route('/about')
 async def about():
-    return render_template('about.html', name="About")
+    return render_template('about.html', name="Обо мне")
 
 @main.route('/favicon.ico')
 async def favicon():
